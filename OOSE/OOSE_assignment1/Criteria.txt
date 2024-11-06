@@ -1,0 +1,62 @@
+Criteria  (a to f)
+
+ 
+
+(a) Gerneral code quality 
+
+The code have comments for different sections and methods with explanations.  
+ 
+To guarantee code quality, PMD is utilized. But because I resolve every PMD warning, the provided code does not contain any PMD configurations or warning suppression.  
+ 
+Thus, there won't be any PMD alerts. The Gradle is constructed effectively. 
+
+ 
+
+(b) Appropriate use of containers 
+
+The code uses containers such as Map, List, Set, and ArrayList appropriately for storing and managing tasks, estimations, and subtasks. 
+
+For example, in the WBS class, a Map<String, Task> to store tasks has been used, demonstrating a suitable use of containers. 
+
+
+(c) Clear and distinct/interface/method responsibilities 
+
+The responsibilities of classes and methods are relatively clear. For example, 
+Configure class handles user configuration, 
+WBS class manages the work breakdown structure, 
+task class manages the getters and setters,
+EstimateEffort class manages effort estimation, 
+highestestimate class manages the highest estimate calculation, 
+Medianestimate class manages the median estimate calculation, 
+Discussestimate class manages the discuss estimate calculation. 
+Each class has methods for specific functionalities related to its responsibility. 
+
+ 
+
+(d) Appropriate error handling and logging 
+
+Error handling is present, such as when tasks are not found , when there are issues with file I/, when the user enters a invalid input.  
+
+Logging is utilized using the java.util.logging.Logger class just because "StackNotTrace" exception was not allowed in PMD warnings.
+
+
+ 
+
+(e) Appropriate use of the strategy pattern and/or template method pattern 
+
+The Strategy Pattern is utilized in the Configure class where different reconciliation approaches (highest estimate, median estimate, discuss estimate) 
+are encapsulated into separate classes (HighestEstimate, MedianEstimate, DiscussEstimate). 
+The choice of strategy is determined at runtime based on user input, providing flexibility in estimation approaches. 
+The code (Configure class) interacts with the strategy objects (HighestEstimate, MedianEstimate, DiscussEstimate) through a common interface or abstract class.
+This allows the client to use any strategy interchangeably, without needing to know the specific implementation details therefore polymorphism is used.
+ 
+The user is asked to select a reconciliation strategy at runtime in the Configure class, according to their preferences.
+the chosen strategy is then instantiated and used to determine the final effort estimate.
+
+Each reconciliation strategy is contained within a distinct class, which increases the code's flexibility and extensibility.
+By using the common interface, adding new strategies is simple and doesn't need changing the current code.
+
+
+(f) Appropriate use of the composite pattern 
+
+I haven't used a composite pattern on my codes 

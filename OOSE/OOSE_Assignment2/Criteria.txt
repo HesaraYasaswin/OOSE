@@ -1,0 +1,59 @@
+criteria -(a) to (g)
+
+(a) General code quality:
+The codebase is commented, providing explanations for complex logic, the purpose of each class, method, and interface. 
+Additionally, meaningful variable and method names are used throughout the code, making it easier to understand the functionality at a glance.
+
+To guarantee code quality, PMD is utilized. But because I resolve every PMD warning, the provided code does not contain any PMD configurations or warning suppression.  
+ 
+Thus, there won't be any PMD alerts. The Gradle is constructed effectively. 
+
+(b) Clear and distinct package/class/interface/method responsibilities:
+The application is structured into multiple packages, each representing a cohesive set of functionalities. 
+there are packages for observer for the codes on observers, state for the codes on states, processor for the codes on message processing, model for bike.java, shop for the shop management codes, factory for the bike creation code. 
+Within each package, classes, interfaces, and methods are organized based on their responsibilities, 
+promoting modular design and separation of concerns. This division enhances code maintainability and scalability.
+
+(c) Appropriate error handling and logging:
+Exception handling is implemented appropriately throughout the application.
+The program includes logging statements using a logging framework like Java's built-in logging (java.util.logging). 
+These logging statements are strategically placed to capture important events, errors, and state changes, aiding in debugging and troubleshooting.
+
+(d) Implementation of a factory and dependency injection:
+i did make use of factories by using the BikeFactory to encapsulate object creation logic and promote loose coupling between components. 
+Dependency injection is utilized where appropriate, such as injecting dependencies like BikeFactory into the BikeShop constructor. 
+This approach enhances code maintainability, testability, and flexibility by decoupling object instantiation from their usage.
+
+(e) Appropriate use of the Observer Pattern:
+The Observer pattern is implemented through classes like CashObserver, ConsoleObserver, EmployeeObserver, FileObserver, InventoryObserver, and ServicingObserver. 
+Each observer class encapsulates specific behaviors that react to changes in the BikeShop object during the simulation. 
+For instance, CashObserver monitors the cash balance of the bike shop and alerts when it falls below a certain threshold, while EmployeeObserver simulates employee payments at regular intervals. 
+Similarly, InventoryObserver triggers alerts when the inventory level drops below a specified threshold, ensuring timely restocking. 
+These observer classes adhere to the SimulationObserver interface, implementing the update method to receive notifications from the BikeShop regarding changes in its state. 
+This flexible design allows for easy addition of new observers and promotes decoupling between the BikeShop and the observer entities, enhancing modularity and maintainability of the system.
+
+
+(f) Appropriate use of the State Pattern:
+
+State pattern is employed to encapsulate the various states of the BikeShop, providing a structured approach to manage its behavior based on internal conditions. 
+The BikeShopState interface serves as the foundation, defining methods that represent different actions the shop can perform. State classes such as LowCashState, LowInventoryState, and NormalState implement the methods to execute state-specific logic, such as handling deliveries, processing purchases, and managing inventory. 
+State transitions are triggered by changes in the BikeShop's internal state, allowing it to dynamically adapt its behavior according to the current situation. 
+This modular approach enhances maintainability and extensibility, enabling easy addition of new states and modification of existing ones as the requirements evolve.
+
+
+(g) Meaningful use of generics:
+Generics are employed meaningfully in the MessageProcessor class, where a generic type parameter (T) is used to process messages of different types in a type-safe manner. 
+This promotes type-safe code reuse and flexibility by allowing the MessageProcessor to handle various types of messages without sacrificing type safety. 
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+how to run the code,
+ - to clean,
+./gradlew clean
+
+- to build,
+./gradlew build
+
+- to run
+./gradlew run
+
+
